@@ -99,13 +99,11 @@ while 1:
         while 1:
             run()
     except exceptions.WebDriverException:
-        print('浏览器窗口意外关闭，请重新运行程序')
-        os.system('pause')
+        print('浏览器窗口意外关闭或登陆失效，请重新运行程序')
         break
     except exceptions.NoSuchWindowException:
         driver.switch_to.window(driver.window_handles[-1])
         continue
     except:
         print('出现未知错误，请重新运行程序')
-        os.system('pause')
         break
