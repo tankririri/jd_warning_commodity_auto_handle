@@ -11,7 +11,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common import exceptions
-
+import winsound
 
 #修改为自己的chrome浏览器文件路径
 chrome_location = r"D:\Program Files\Chrome\Chrome\chrome.exe"
@@ -122,13 +122,16 @@ while True:
     driver.switch_to.window(driver.window_handles[0])
     driver.get('https://legal.shop.jd.com/venderWarning/attributesMutex.action')
     try:
-        while 1:
+        while True:
             run()
     except exceptions.WebDriverException:
         print('浏览器窗口意外关闭或登陆失效，如不能继续运行请重新运行程序')
+        winsound.Beep(1400, 2000)
         continue
     except exceptions.NoSuchWindowException:
+        winsound.Beep(1400, 2000)
         continue
     except:
         print('出现未知错误，如不能继续运行请重新运行程序')
+        winsound.Beep(1400, 2000)
         continue
