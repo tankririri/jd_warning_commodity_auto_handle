@@ -14,7 +14,7 @@ from selenium.common import exceptions
 import winsound
 
 #修改为自己的chrome浏览器文件路径
-chrome_location = r"D:\Program Files\Chrome\Chrome\chrome.exe"
+chrome_location = r".\Chrome\chrome.exe"
 chrome_options = Options()
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--log-level=3')
@@ -37,7 +37,7 @@ def run():
     list = data.find_elements_by_tag_name('tr')
     for i in list:
         try:
-            i.find_element_by_tag_name('span').click()
+            i.find_element_by_class_name('btn').click()
             time.sleep(0.5)
             while len(driver.window_handles) > 2:
                 driver.switch_to.window(driver.window_handles[1])
@@ -58,7 +58,7 @@ def run():
                     print('商品下架成功')
                     #返回商品预警列表
                     driver.switch_to.window(driver.window_handles[0])
-                    i.find_element_by_tag_name('span').click()
+                    i.find_element_by_class_name('btn').click()
                     time.sleep(0.5)
                     driver.switch_to.window(driver.window_handles[1])
                 #切换到待售商品管理页面
